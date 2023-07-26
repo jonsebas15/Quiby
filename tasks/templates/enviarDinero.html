@@ -1,0 +1,275 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block head %}
+<style>
+html {
+    box-sizing: border-box;
+    font-size: 75%;
+  }
+  
+  *,
+  *:before,
+  *:after {
+    box-sizing: inherit;
+  }
+  
+  .forzar{
+    position: absolute;
+    top: -31px;
+    left: 0; 
+    z-index: 1;
+  }
+  body {
+    margin: 0;
+    padding: 0;
+    background-image: url("{% static 'images/login2.jpg' %}");
+    background-repeat: no-repeat;
+    background-position: center center;
+    min-width: 70%;
+    height: 100vh;
+    font-family: "Quicksand", sans-serif;
+    background-size: cover;
+  }
+  
+  .login-box {
+    width: 320px;
+    height: 420px;
+    background-color: aliceblue;
+    color: rgb(119, 105, 209);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    box-sizing: border-box;
+    padding: 70px 30px;
+    border-radius: 20px;
+  }
+  
+  .register {
+    width: 420px;
+    height: 620px;
+  }
+  
+  .login-box .avataricon {
+    width: 100px;
+    height: 90;
+    border-radius: 20%;
+    position: absolute;
+    top: -50px;
+    left: calc(50% - 50px);
+  }
+  
+  .login-box h1 {
+    margin: 0;
+    padding: 0 0 20px;
+    font-size: 22px;
+    text-align: center;
+  }
+  
+  .login-box label {
+    margin: 0;
+    padding: 0;
+    font-weight: bold;
+    display: block;
+  }
+  
+  .login-box input {
+    width: 100%;
+    margin-bottom: 20px;
+  }
+  
+  .login-box input {
+    border: none;
+    border-bottom: 1px solid blueviolet;
+    background: transparent;
+    outline: none;
+    height: 40px;
+    color: blueviolet;
+  }
+  
+  /* selectores de la barra de navegación */
+  
+  ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #ecdff1;
+    border-radius: 10%;
+  }
+  
+  li {
+    float: right;
+  }
+  
+  li a {
+    display: block;
+    color: #efddef;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+  }
+  
+  li a:hover {
+    background-color: violet;
+  }
+  .active {
+    background-color: rgb(119, 105, 209);
+  }
+  
+  /* Botón y parte inferior */
+  
+  input,
+  textarea {
+    padding: 5px;
+    margin-bottom: 15px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+  }
+  
+  input[type="submit"] {
+    background-color: rgb(119, 105, 209);
+    outline: none;
+    height: 40px;
+    font-size: 10px;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 20px;
+    cursor: pointer;
+  }
+  
+  input[type="submit"]:hover {
+    background-color: violet;
+  }
+  
+  .login-box a {
+    text-decoration: none;
+    font-size: 12px;
+    line-height: 20px;
+    color: violet;
+  }
+  
+  
+  /* CARTERA */
+  
+  .container-card {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  
+  
+  }
+  
+  .card {
+    
+    background-color: white;
+    
+    width: 328px;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 2px 2px 15px rgba(0, 0, 0, 0.5);
+  }
+  .card-header {
+    width: 100%;
+    display: block;
+  }
+  .card-body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-bottom: 1px solid var(--color2);
+  }
+  .card-body-contentimg {
+    border: 5px solid blue;
+    border-radius: 50%;
+    background-color: white;
+    box-shadow: 0px -10px 20px blue;
+    margin-top: -58px;
+  }
+  .card-body-contentimg-img {
+    padding: 20px;
+    border-radius: 100%;
+    width: 150px;
+  }
+  .card-body-title {
+    margin-top: 2rem;
+    font-size: 3rem;
+  }
+  
+  .card-footer {
+    display: flex;
+    justify-content: space-around;
+  }
+  .card-footer-poder {
+    text-align: center;
+    margin-bottom: 2rem;
+    margin-top: 2rem;
+  }
+  /* icons */
+  .bi{
+  font-size: 40px;
+  border-width: 20px;
+  color: blue;
+  
+  }
+  .card-body-text{
+  
+    font-size: 15px;
+    color: blue;
+    
+  }
+  
+  .bi-arrow-left{
+  
+  font-size: 25px;
+  
+  }
+  </style>
+  
+  {% endblock %}
+
+{% block content %}
+
+<nav id="navbar">
+  <ul>
+    <li><a class="active" href="/salir">SALIR</a></li>
+    <li><a class="active" href="/cartera">CARTERA</a></li>
+    <li><a class="active" href="/">INICIO</a></li>
+  </ul>   
+  <a class="forzar" href="/">
+  <img src="{% static 'images/icon-brand.png' %}" width="120" height="105" alt="Logo de la empresa"> 
+  </a>  
+  </nav>
+
+<div class="login-box">
+    <a href="/cartera"><i class="bi bi-arrow-left" ></i>
+    </a>
+    <img class="avataricon" src="{% static 'images/icon.png' %}" alt="logo de Quiby">
+    <h1>Envia tu dinero</h1>
+    <p> {{error}} </p>
+    <form action="/cartera/enviar/" method="post">
+        {% csrf_token %}
+        <label for="docform">Destinatario</label>
+        <input id="docform" placeholder="ingresa tu numero" type="text"  name="destinatario" maxlength="10" pattern="[0-9]+" >
+
+        <label for="nombreform">Monto</label>
+        <input id="nombreform" placeholder="ingresa tu clave" type="text"  name="monto" maxlength="12" pattern="[0-9]+">
+        
+        <label for="nombreform">Descripción</label>
+        <input id="nombreform" placeholder="ingresa tu clave" type="text"  name="descripcion" maxlength="40">
+
+        <input type="submit">
+   
+
+    </form>
+
+</div>
+
+</form>
+
+{% endblock %}
+
